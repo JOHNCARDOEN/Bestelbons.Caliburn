@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="WPF_Bestelbons.Views.LoadView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Bestelbons.Views"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="900">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <StackPanel   Orientation="Horizontal">
+                <Image Height="150" gif:ImageBehavior.RepeatBehavior="99x" gif:ImageBehavior.AnimatedSource="/Resources/BestelbonGIFCW.gif" />
+                <!--<TextBlock    Text="Loading ..." Background="Transparent" Foreground="Gainsboro" Margin="50,0,0,0" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
+            </StackPanel>
+            <ProgressBar  Grid.Row="1" Grid.Column="1" Height="1" Foreground="Orange" Background="Transparent" Style="{StaticResource ProgressBar}" Maximum="100" Value="{Binding ProgressValue}" VerticalAlignment="Bottom"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

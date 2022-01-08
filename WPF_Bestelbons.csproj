@@ -1,0 +1,335 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>WPF_Bestelbons</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyVersion>0.5.0.5</AssemblyVersion>
+    <FileVersion>0.5.0.5</FileVersion>
+    <ApplicationIcon>ICON.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Bestelbons_NET5.0\**" />
+    <EmbeddedResource Remove="Bestelbons_NET5.0\**" />
+    <None Remove="Bestelbons_NET5.0\**" />
+    <Page Remove="Bestelbons_NET5.0\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\1021020-512.png" />
+    <None Remove="Resources\ADD.png" />
+    <None Remove="Resources\APPROVED.png" />
+    <None Remove="Resources\ASK_TO_APPROVE.png" />
+    <None Remove="Resources\Bestelbon1.png" />
+    <None Remove="Resources\Bestelbon10.png" />
+    <None Remove="Resources\Bestelbon11.png" />
+    <None Remove="Resources\Bestelbon12.png" />
+    <None Remove="Resources\Bestelbon2.png" />
+    <None Remove="Resources\Bestelbon3.png" />
+    <None Remove="Resources\Bestelbon4.png" />
+    <None Remove="Resources\Bestelbon5.png" />
+    <None Remove="Resources\Bestelbon6.png" />
+    <None Remove="Resources\Bestelbon7.png" />
+    <None Remove="Resources\Bestelbon8.png" />
+    <None Remove="Resources\Bestelbon9.png" />
+    <None Remove="Resources\BestelbonGIFCCW.gif" />
+    <None Remove="Resources\BestelbonGIFCW.gif" />
+    <None Remove="Resources\BLANCO.png" />
+    <None Remove="Resources\CaliburnIcon.png" />
+    <None Remove="Resources\CHECKLIST.png" />
+    <None Remove="Resources\CLEAN.png" />
+    <None Remove="Resources\CLOSE.png" />
+    <None Remove="Resources\CSPACK.png" />
+    <None Remove="Resources\CUT.png" />
+    <None Remove="Resources\DELETE.png" />
+    <None Remove="Resources\DELIVERED.png" />
+    <None Remove="Resources\EDIT.png" />
+    <None Remove="Resources\HOOFD.png" />
+    <None Remove="Resources\HOOFD.xcf" />
+    <None Remove="Resources\ICON.ico" />
+    <None Remove="Resources\ICON.png" />
+    <None Remove="Resources\ICON.xcf" />
+    <None Remove="Resources\INFO.png" />
+    <None Remove="Resources\LISTITEM.png" />
+    <None Remove="Resources\LISTITEMDELIVERED.png" />
+    <None Remove="Resources\LOGO.png" />
+    <None Remove="Resources\LOGO_275.png" />
+    <None Remove="Resources\MAGNIFYINGGLASS.png" />
+    <None Remove="Resources\MAIL.png" />
+    <None Remove="Resources\MAXIMIZE.png" />
+    <None Remove="Resources\MINIMIZE.png" />
+    <None Remove="Resources\MINUSICON.png" />
+    <None Remove="Resources\NET5.0.png" />
+    <None Remove="Resources\NEXT.png" />
+    <None Remove="Resources\NEXT_PAGE.png" />
+    <None Remove="Resources\ORDEREDLIST.png" />
+    <None Remove="Resources\Pencil-icon.png" />
+    <None Remove="Resources\PLUSICON.png" />
+    <None Remove="Resources\PREVIOUS.png" />
+    <None Remove="Resources\PREV_PAGE.png" />
+    <None Remove="Resources\PRINT.png" />
+    <None Remove="Resources\RESTORE.png" />
+    <None Remove="Resources\SEARCH.png" />
+    <None Remove="Resources\SEARCH_CONTRACT.png" />
+    <None Remove="Resources\SEND_MAIL.png" />
+    <None Remove="Resources\SEND_MAIL_ITEM.png" />
+    <None Remove="Resources\Thumbs.db" />
+    <None Remove="Resources\TIME_OUT.png" />
+    <None Remove="Resources\TOGGLE_LEFT.png" />
+    <None Remove="Resources\TOGGLE_RIGHT.png" />
+    <None Remove="Resources\USER.png" />
+    <None Remove="Resources\ZOOM_IN.png" />
+    <None Remove="Resources\ZOOM_OUT.png" />
+    <None Remove="Views\Resources\ERROR.png" />
+    <None Remove="Views\Resources\INFO.png" />
+    <None Remove="Views\Resources\WARNING.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Caliburn.Micro" Version="4.0.177" />
+    <PackageReference Include="EPPlusFree" Version="4.5.3.8" />
+    <PackageReference Include="FreeSpire.XLS" Version="11.8.6" />
+    <PackageReference Include="GhostScript.NetCore" Version="1.0.1" />
+    <PackageReference Include="itext7" Version="7.2.0" />
+    <PackageReference Include="MailKit" Version="2.15.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+    <PackageReference Include="Microsoft.XmlSerializer.Generator" Version="5.0.0" />
+    <PackageReference Include="PdfiumViewer.Native.x86_64.v8-xfa" Version="2018.4.8.256" />
+    <PackageReference Include="PdfiumViewer.WPF" Version="1.0.6" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.XmlSerializer.Generator" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\LOGO_275.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Resource Include="Resources\CHECKLIST.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\MAIL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\NET5.0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\PRINT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ZOOM_IN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\1021020-512.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ADD.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\APPROVED.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ASK_TO_APPROVE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bestelbon9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\BestelbonGIFCCW.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\BestelbonGIFCW.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\BLANCO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\CaliburnIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\CLEAN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\CLOSE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\CSPACK.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\CUT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\DELETE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\DELIVERED.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\EDIT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\HOOFD.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\HOOFD.xcf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ICON.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ICON.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ICON.xcf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\INFO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\LISTITEM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\LISTITEMDELIVERED.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\LOGO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\MAGNIFYINGGLASS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\MAXIMIZE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\MINIMIZE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\MINUSICON.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\NEXT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\NEXT_PAGE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ORDEREDLIST.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Pencil-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\PLUSICON.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\PREVIOUS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\PREV_PAGE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\RESTORE.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\SEARCH.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\SEARCH_CONTRACT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\SEND_MAIL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\SEND_MAIL_ITEM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Thumbs.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\TIME_OUT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\TOGGLE_LEFT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\TOGGLE_RIGHT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\USER.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ZOOM_OUT.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\Resources\ERROR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\Resources\INFO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\Resources\WARNING.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="WPF_Bestelbons.Views.UsersView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Bestelbons.Views"
+        xmlns:cal ="http://www.caliburnproject.org"
+        mc:Ignorable="d"
+        Width="300"
+        d:DesignHeight="850" d:DesignWidth="800" >
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+
+
+    <Grid Background="#2D2D30">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.8*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Row="0" Grid.Column="0" x:Name="UsersList" Foreground="Gainsboro" Background="#1B1B1B" HorizontalContentAlignment="Stretch" SelectedIndex="{Binding SelectedIndex}" SelectedItem ="{Binding UsersSelectedItem}" ItemContainerStyle="{StaticResource ListBoxItemOrange}" >
+            <ListBox.ContextMenu>
+                <ContextMenu Background="#2D2D30" Foreground="Gainsboro">
+                    <!--<MenuItem Header="Add" cal:Message.Attach="[Event Click] = [Action Add]" >
+                        <MenuItem.Icon>
+                            <Image Source="pack://application:,,,/Resources/ADD.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>-->
+                    <MenuItem Header="Delete"  cal:Message.Attach="[Event Click] = [Action Delete]">
+                        <MenuItem.Icon>
+                            <Image Width="18" Height="18" Source="pack://application:,,,/Resources/DELETE.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0,5,0,5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding FirstName}" Background="Transparent" Foreground="Gainsboro" Margin="10,0,0,0" />
+                            <TextBlock Text="{Binding LastName}" Background="Transparent" Foreground="Gainsboro" Margin="5,0,0,0" />
+                        </StackPanel>
+                        <TextBlock Text="{Binding Email}" Foreground="Gainsboro" Margin="20,0,0,0"  />
+                        <TextBlock Text="{Binding Tel}" Foreground="Gainsboro" Margin="20,0,0,0"  />
+                        <TextBlock Text="{Binding Handtekening}" Foreground="Gainsboro" Margin="20,0,0,0"  />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Grid Grid.Row="1" Margin="0,30,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <!--RIJ 0-->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Last Name" Margin="5,0,0,0" VerticalAlignment="center" Foreground="Gainsboro" />
+            <TextBox x:Name="LastName" Grid.Row="0" Grid.Column="1" Text="{Binding LastName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Background="#00000000"  Foreground="Gainsboro" />
+            <!--RIJ 1-->
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="First Name" Margin="5,0,0,0" VerticalAlignment="center" Foreground="Gainsboro" />
+            <TextBox x:Name="FirstName"  Grid.Row="2" Grid.Column="1" Text="{Binding FirstName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Background="#00000000" Foreground="Gainsboro" />
+            <!--RIJ 2-->
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="E mail" Margin="5,0,0,0" VerticalAlignment="center" Foreground="Gainsboro" />
+            <TextBox x:Name="Email" Grid.Row="4" Grid.Column="1" Text="{Binding Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Background="#00000000"  Foreground="Gainsboro" />
+            <!--RIJ 3-->
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Tel" Margin="5,0,0,0" VerticalAlignment="center" Foreground="Gainsboro" />
+            <TextBox x:Name="Tel"  Grid.Row="6" Grid.Column="1" Text="{Binding Tel,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Background="#00000000" Foreground="Gainsboro" />
+            <!--RIJ 4-->
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="Signature" Margin="5,0,0,0" VerticalAlignment="center" Foreground="Gainsboro" />
+            <TextBox x:Name="Handtekening" Grid.Row="8" Grid.Column="1" Text="{Binding Handtekening,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Background="#00000000"  Foreground="Gainsboro" />
+            <!--RIJ 5-->
+            <TextBlock Grid.Row="10" Grid.Column="0" Text="Can Approve" Margin="5,0,0,0" VerticalAlignment="center" Foreground="Gainsboro" />
+            <CheckBox Grid.Row="10" Grid.Column="1" Margin="-5,0,0,0" IsChecked="{Binding CanApprove,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Style="{StaticResource CheckBoxGreen}"/>
+            <!--RIJ 6-->
+            <Button Grid.Row="12" Width="80" Grid.Column="1" x:Name="Signature" Content="Signature" MinWidth="50" FontSize="12"  Background="#2D2D30" Style="{StaticResource BlueButton}"/>
+            <!--RIJ 7-->
+            <Label Grid.Row="14" Content="{Binding MACAdressSecret}" Foreground="Gainsboro" />
+            <StackPanel Grid.Row="14" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Stretch">
+                <Button  Width="100"  x:Name="CaptureMAC" Content="Capture MAC" MinWidth="50" FontSize="12"  Background="#2D2D30" Style="{StaticResource BlueButton}"/>
+                <TextBlock Text="MAC OK" Foreground="Gainsboro" VerticalAlignment="Center" Margin="20,0,0,0" Visibility="{Binding MACAdressOK, Converter={StaticResource BoolToVis}}" />
+            </StackPanel>
+
+        </Grid>
+
+        <DockPanel Grid.Row="2" Grid.Column="0">
+            <Button x:Name="Close" Content="Close" MinWidth="50" FontSize="12"  Background="#2D2D30" Style="{StaticResource BlueButton}"/>
+            <Button x:Name="Add" Content="Add" MinWidth="50" FontSize="12"  Background="#2D2D30" Style="{StaticResource BlueButton}"/>
+            <Button x:Name="Save" Content="Save"  MinWidth="50" FontSize="12"  Background="#2D2D30" Style="{StaticResource BlueButton}"/>
+            <Button x:Name="Clear" Content="Clear"  MinWidth="50" FontSize="12"  Background="#2D2D30" Style="{StaticResource BlueButton}"/>
+            <Button x:Name="Delete" Content="Delete" Grid.Row="1" Grid.Column="4"  MinWidth="50" FontSize="12"  Background="#2D2D30" DockPanel.Dock="Right" HorizontalAlignment="Right" Style="{StaticResource BlueButton}"/>
+        </DockPanel>
+
+    </Grid>
+</UserControl>

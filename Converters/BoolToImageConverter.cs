@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows.Media.Imaging;
+
+namespace WPF_Bestelbons.Converters
+{
+    public class BoolToImageConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((bool)value)
+            {
+                BitmapImage image1 = new BitmapImage(new Uri("pack://application:,,,/Resources/TOGGLE_LEFT.png"));
+                return image1;
+            }
+            else
+            {
+                BitmapImage image2 = new BitmapImage(new Uri("pack://application:,,,/Resources/TOGGLE_RIGHT.png"));
+                return image2;
+            }
+               
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

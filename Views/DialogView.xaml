@@ -1,0 +1,64 @@
+﻿<Window x:Class="WPF_Bestelbons.Views.DialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:WPF_Bestelbons.Converters"
+        xmlns:local="clr-namespace:WPF_Bestelbons.Views"
+        mc:Ignorable="d"
+        Opacity="0.9"
+        Title="DialogView" Height="Auto" Width="550" SizeToContent="Height" Background="#1B1B1B" WindowStartupLocation="CenterScreen"  ResizeMode="CanResizeWithGrip" WindowStyle="None" AllowsTransparency="True">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
+    
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
+
+    <Border BorderBrush="Black" BorderThickness="3" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Height="30" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Background="Transparent" RenderOptions.BitmapScalingMode="HighQuality"  RenderOptions.EdgeMode="Aliased">
+                <Label Grid.Row="0" Grid.ColumnSpan="5" x:Name="Capiton" Foreground="Orange" FontSize="18" Margin="10,0,0,0" VerticalContentAlignment="Center"/>
+                <StackPanel Grid.Row="0" Width="30" DockPanel.Dock="Right"  WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right"  Orientation="Horizontal" Margin="0,0,5,0">
+
+                    <Button Style="{StaticResource WindowcloseButton}"  x:Name="CloseButton" BorderThickness="0" ToolTip="Close" ToolTipService.ShowDuration="20000">
+                        <Image Source="pack://application:,,,/Resources/CLOSE.png"/>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+            <!-- CAPITON BAR-->
+
+            <TextBlock Grid.Row="2" Grid.ColumnSpan="6" TextWrapping="WrapWithOverflow" Text="{Binding Message}" Foreground="Gainsboro" FontSize="{Binding FontsizeMessage}" Margin="15,0,15,0" VerticalAlignment="Center" />
+
+
+            <Button Grid.Row="3" Grid.Column="4" x:Name="YES" Content="Yes" Style="{StaticResource OrangeButton}" Width="50" FontSize="16" Background="Transparent" Margin="0,0,20,0" Visibility="{Binding YesVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <Button Grid.Row="3" Grid.Column="5" x:Name="NO" Content="No" Style="{StaticResource OrangeButton}" Width="50" FontSize="16" Background="Transparent" Margin="0,0,20,0" Visibility="{Binding NoVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <Button Grid.Row="3" Grid.Column="4" x:Name="OK" Content="Ok" Style="{StaticResource OrangeButton}" Width="50" FontSize="16" Background="Transparent" Margin="0,0,20,0" Visibility="{Binding OkVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <Button Grid.Row="3" Grid.Column="5" x:Name="CANCEL" Content="Cancel" Style="{StaticResource OrangeButton}" Width="50" FontSize="16" Background="Transparent" Margin="0,0,20,0" Visibility="{Binding CancelVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+        </Grid>
+    </Border>
+    <!-- CAPITON BAR-->
+
+
+</Window>

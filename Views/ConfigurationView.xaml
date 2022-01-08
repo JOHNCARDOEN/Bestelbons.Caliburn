@@ -1,0 +1,62 @@
+﻿<Window x:Class="WPF_Bestelbons.Views.ConfigurationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:WPF_Bestelbons.Views"
+        xmlns:cal="http://www.caliburnproject.org"
+        mc:Ignorable="d" 
+        d:DesignHeight="450" 
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="#202020" 
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResizeWithGrip"
+        Width="1400"
+        Height="750">
+    <Grid>
+        <Border BorderBrush="Orange" BorderThickness="1" >
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+
+                <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Background="Transparent" RenderOptions.BitmapScalingMode="HighQuality"  RenderOptions.EdgeMode="Aliased" >
+
+                    <!--<Label DockPanel.Dock="Left" Content="Configuration" Background="#2D2D30" Foreground="#FFAA18" FontSize="12"  Margin="10,0,0,0" VerticalContentAlignment="Center"/>-->
+                    <StackPanel Width="30" DockPanel.Dock="Right"  WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="top" HorizontalAlignment="Right"  Orientation="Horizontal" Margin="0,0,0,0">
+                        <Button Style="{StaticResource WindowcloseButton}" Width="30" x:Name="CloseButton" Padding="4" BorderThickness="0" ToolTip="Close" ToolTipService.ShowDuration="5000" ToolTipService.InitialShowDelay="1000" ToolTipService.BetweenShowDelay="1000">
+                            <Image Source="pack://application:,,,/Resources/CLOSE.png"/>
+                        </Button>
+                    </StackPanel>
+                </DockPanel>
+
+
+                <TreeView Grid.Row="1" Grid.Column="1"  Style="{StaticResource TreeViewOrange}" Background="Transparent" >
+                    <TreeViewItem Header=""  />
+                    <TreeViewItem Header="Directories" Tag="Directories" cal:Message.Attach="[Event Selected] = [Action Directories]" />
+                    <TreeViewItem Header=""  />
+                    <TreeViewItem Header="ProjectID's" Tag="Directories" cal:Message.Attach="[Event Selected] = [Action ProjectFileID]" />
+                    <TreeViewItem Header=""  />
+                    <TreeViewItem Header="Projects" Tag="Directories" cal:Message.Attach="[Event Selected] = [Action Projects]" />
+                    <!--<TreeViewItem Header="Alarms" Tag="Directories" cal:Message.Attach="[Event Selected] = [Action AlarmsSettings]" />
+                        <TreeViewItem Header="Copy Recepten" Tag="Directories" cal:Message.Attach="[Event Selected] = [Action CopyRecepten]" />
+                        <TreeViewItem Header="New Recepten" Tag="Directories" cal:Message.Attach="[Event Selected] = [Action NewRecepten]" />-->
+                </TreeView>
+                <ContentControl Grid.Row="1" Grid.Column="2" 
+                                x:Name="ActiveItem"/>
+
+            </Grid>
+
+
+        </Border>
+    </Grid>
+</Window>

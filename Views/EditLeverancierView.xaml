@@ -1,0 +1,128 @@
+﻿<Window x:Class="WPF_Bestelbons.Views.EditLeverancierView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cal ="http://www.caliburnproject.org"
+        xmlns:converters="clr-namespace:WPF_Bestelbons.Converters"
+        xmlns:local="clr-namespace:WPF_Bestelbons.Views"
+        mc:Ignorable="d"
+        Title="EditLeverancierView" Height="730"  Width="450" Background="#1B1B1B" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+
+    <Window.Resources>
+        <converters:BoolToRectangleFill x:Key="BoolToRectangleFill"/>
+        <converters:BoolToBorderBrushConverter x:Key="BoolToBorderBrushConverter"/>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
+    <Border BorderBrush="Black" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="600"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="40"/>
+
+            </Grid.ColumnDefinitions>
+            <!-- CAPITON BAR-->
+            <DockPanel Height="30" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Background="Transparent" RenderOptions.BitmapScalingMode="HighQuality"  RenderOptions.EdgeMode="Aliased">
+                <Label Grid.Row="0" x:Name="Capiton" Foreground="Orange" FontSize="18" Margin="15,0,0,0" VerticalContentAlignment="Center"/>
+                <StackPanel Width="30" DockPanel.Dock="Right"  WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right"  Orientation="Horizontal" Margin="0,0,5,0">
+
+                    <Button Style="{StaticResource WindowcloseButton}"  x:Name="CloseButton" BorderThickness="0" ToolTip="Close" ToolTipService.ShowDuration="20000">
+                        <Image Source="pack://application:,,,/Resources/CLOSE.png"/>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+            <!-- CAPITON BAR-->
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="  Naam " Margin="0,0,20,0"  VerticalAlignment="Center" Foreground="Gainsboro" Background="Transparent"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="EditedLeverancier_Name"  Margin="0,2,2,2"  Foreground="Gainsboro"  Background="Transparent"  FontSize="16" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="  Email" Margin="0,0,20,0"  VerticalAlignment="Center" Foreground="Gainsboro" Background="Transparent"/>
+                <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=EditedLeverancier.Email,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,2,2,2" BorderBrush="{Binding EmailValid, Converter={StaticResource BoolToBorderBrushConverter}}" BorderThickness="1" Foreground="Gainsboro"  Background="Transparent" VerticalContentAlignment="Center" FontSize="16"  cal:Message.Attach="[Event KeyUp] = [Action KeyUp]" Style="{StaticResource OwnTextBox}" CaretBrush="Gainsboro"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="  CC Emails" Margin="0,0,20,0"  VerticalAlignment="Top" Foreground="Gainsboro" Background="Transparent"/>
+                <ListBox Grid.Row="2" Grid.Column="1"  x:Name="EditedLeverancier_CCEmails" Margin="0,2,2,2" Foreground="Gainsboro"  Background="Transparent" VerticalContentAlignment="Center" FontSize="16" ItemContainerStyle="{StaticResource ListBoxItemOrange}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0" Text="{Binding Path=Alias,UpdateSourceTrigger=PropertyChanged}" Foreground="Gainsboro" Background="Transparent" BorderThickness="0" CaretBrush="Gainsboro"/>
+                                    <TextBox Grid.Column="1" Text="{Binding Path=CCEmail,UpdateSourceTrigger=PropertyChanged}" Foreground="Gainsboro" Background="Transparent" BorderThickness="0" CaretBrush="Gainsboro"/>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="  Alias" Margin="0,0,20,0"  VerticalAlignment="Center" Foreground="Gainsboro" Background="Transparent"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Alias,UpdateSourceTrigger=PropertyChanged}" Foreground="Gainsboro" Margin="0,2,5,2" Background="Transparent" VerticalAlignment="center"  CaretBrush="Gainsboro" FontSize="16"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="  CC Email" Margin="0,0,20,0"  VerticalAlignment="Center" Foreground="Gainsboro" Background="Transparent"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" x:Name="CCEmail" Margin="0,2,5,2" BorderBrush="{Binding CCEmailValid, Converter={StaticResource BoolToBorderBrushConverter}}" BorderThickness="1" Foreground="Gainsboro"  Background="Transparent" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16" cal:Message.Attach="[Event KeyUp] = [Action KeyUpCCEmail]" Style="{StaticResource OwnTextBox}" CaretBrush="Gainsboro"/>
+                        <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource BlueButton}" x:Name="AddCCEmail" Width="75" Content="Add" Background="Transparent" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,10,0" />
+                    </Grid>
+                </Border>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="  Street" Margin="0,0,20,0"  VerticalAlignment="Center" Foreground="Gainsboro" Background="Transparent"/>
+                <TextBox Grid.Row="4" Grid.Column="1"  x:Name="EditedLeverancier_Street" Margin="0,2,2,2"  Foreground="Gainsboro"  Background="Transparent" VerticalContentAlignment="Center" FontSize="16" cal:Message.Attach="[Event KeyUp] = [Action KeyUp]" CaretBrush="Gainsboro"/>
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="  Number" Margin="0,0,20,0"  VerticalAlignment="Center" Foreground="Gainsboro" Background="Transparent"/>
+                <TextBox Grid.Row="5" Grid.Column="1"  x:Name="EditedLeverancier_Number" Margin="0,2,2,2"  Foreground="Gainsboro"  Background="Transparent" VerticalContentAlignment="Center" FontSize="16" cal:Message.Attach="[Event KeyUp] = [Action KeyUp]" CaretBrush="Gainsboro"/>
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="  Postcode" Margin="0,0,20,0"  VerticalAlignment="Center" Foreground="Gainsboro" Background="Transparent"/>
+                <TextBox Grid.Row="6" Grid.Column="1"  x:Name="EditedLeverancier_Postcode" Margin="0,2,2,2"  Foreground="Gainsboro"  Background="Transparent" VerticalContentAlignment="Center" FontSize="16" cal:Message.Attach="[Event KeyUp] = [Action KeyUp]" CaretBrush="Gainsboro"/>
+                <TextBlock Grid.Row="7" Grid.Column="0" Text="  City" Margin="0,0,20,0"  VerticalAlignment="Center" Foreground="Gainsboro" Background="Transparent"/>
+                <TextBox Grid.Row="7" Grid.Column="1"  x:Name="EditedLeverancier_City" Margin="0,2,2,2"  Foreground="Gainsboro"  Background="Transparent" VerticalContentAlignment="Center" FontSize="16" cal:Message.Attach="[Event KeyUp] = [Action KeyUp]" CaretBrush="Gainsboro"/>
+                <TextBlock Grid.Row="8" Grid.Column="0" Text="  Tel" Margin="0,0,20,0"  VerticalAlignment="Center" Foreground="Gainsboro" Background="Transparent"/>
+                <TextBox Grid.Row="8" Grid.Column="1"  x:Name="EditedLeverancier_Tel" Margin="0,2,2,2"  Foreground="Gainsboro"  Background="Transparent" VerticalContentAlignment="Center" FontSize="16" cal:Message.Attach="[Event KeyUp] = [Action KeyUp]" CaretBrush="Gainsboro"/>
+            </Grid>
+            <DockPanel  Grid.Row="4">
+                <Rectangle  Width="220" Height="8" Fill="{Binding EditSaved,Converter={StaticResource BoolToRectangleFill}}" Margin="30,11,0,0"/>
+                <Button Style="{StaticResource BlueButton}" x:Name="SaveEditedLeverancier" Width="75" Content="Save" Background="Transparent" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,50,0" />
+            </DockPanel>
+
+            <Grid Grid.Row="2" Grid.Column="4" Grid.RowSpan="3" Visibility="{Binding SaveReminder, Converter={StaticResource BoolToVisibilityConverter}}" >
+                <Rectangle  Width="20" Fill="red"/>
+                <TextBlock Text="NOT SAVED" Foreground="Gainsboro" VerticalAlignment="center" HorizontalAlignment="center" FontSize="18">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="90"/>
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Grid >
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="WPF_Bestelbons.Views.ProjectDirectoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Model ="clr-namespace:WPF_Bestelbons.ViewModels"
+             xmlns:local="clr-namespace:WPF_Bestelbons.Views"
+             mc:Ignorable="d" 
+             Background="#2D2D30" 
+             d:DesignHeight="450" d:DesignWidth="300">
+
+    <UserControl.Resources>
+
+        <!--<converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>-->
+    </UserControl.Resources>
+    <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+
+
+                <TreeView  Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Root}" Style="{StaticResource TreeViewOrange}" Background="Transparent" Margin="0,10,0,10">
+                    <TreeView.Resources>
+                        <HierarchicalDataTemplate DataType="{x:Type Model:ProjectDirectory}"
+                                          ItemsSource="{Binding Children}">
+                            <TextBlock Text="{Binding DirectoryName}" />
+
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate DataType="{x:Type Model:FileInProjDir}">
+                            <TextBlock Text="{Binding FileName}" />
+                        </HierarchicalDataTemplate>
+
+                        <!--BINDINGS IN RESOURCE DIRECTORY 
+                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />-->
+
+                    </TreeView.Resources>
+                </TreeView>
+
+                <DockPanel Grid.Row="1" Grid.Column="1" >
+                    <Button x:Name="SetProjectDirectory" Content="Set Project Directory"  MinWidth="45" FontSize="12"  Background="Transparent" Style="{StaticResource BlueButton}"/>
+                </DockPanel>
+
+    </Grid>
+</UserControl>

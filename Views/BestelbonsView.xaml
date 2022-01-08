@@ -1,0 +1,152 @@
+﻿<UserControl x:Class="WPF_Bestelbons.Views.BestelbonsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:WPF_Bestelbons.Converters"
+             xmlns:local="clr-namespace:WPF_Bestelbons"
+             xmlns:cal="http://www.caliburnproject.org"        
+             mc:Ignorable="d" 
+             Width="350"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <converters:DeliveryExpiredToBrushConverter x:Key="DeliveryExpiredToBrushConverter"/>
+        <converters:ExpiredViewToImageConverter x:Key="ExpiredViewToImageConverter"/>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:BoolToBackgroundConverter x:Key="BoolToBackgroundConverter"/>
+        <converters:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+        <converters:BoolToVisibilityHiddenConverter x:Key="BoolToVisibilityHiddenConverter"/>
+        <converters:BoolsToImageMultiConverter x:Key="BoolsToImageMultiConverter"/>
+        <converters:UserToVisibilityConverter x:Key="UserToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <Grid Background="#2D2D30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" BorderThickness="1" BorderBrush="Orange" Margin="0,0,0,3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0" x:Name="Search" VerticalContentAlignment="Center" BorderThickness="0" HorizontalAlignment="Stretch" Margin="5,0,0,0" Background="#00000000"   Foreground="Gainsboro" cal:Message.Attach="[Event KeyUp] =[Action Select ]"/>
+
+                <Button x:Name="ClearFilter" Grid.Column="1" Background="Transparent" Style="{StaticResource Button}" ToolTip="Wis Filter" ToolTipService.ShowDuration="20000">
+                    <Image  Source="pack://application:,,,/Resources/CLEAN.png" Width="20" Margin="3,0,3,0"/>
+                </Button>
+                <Button x:Name="SearchBestelbons" Grid.Column="2" Background="{Binding SearchBestelbonRegels,Converter={StaticResource BoolToBackgroundConverter}}" Style="{StaticResource Button}" ToolTip="Zoeken in Bestelregels" ToolTipService.ShowDuration="20000">
+                    <Image  Source="pack://application:,,,/Resources/SEARCH_CONTRACT.png" Width="20" Margin="3,0,3,0"/>
+                </Button>
+                <Button x:Name="ApprovalFilter" Grid.Column="3" Background="{Binding ApprovalView,Converter={StaticResource BoolToBackgroundConverter}}" Style="{StaticResource Button}" ToolTip="Goed te keuren" ToolTipService.ShowDuration="20000">
+                    <Image  Source="pack://application:,,,/Resources/ASK_TO_APPROVE.png" Width="20" Margin="3,0,3,0"/>
+                </Button>
+                <!--<Button x:Name="CheckVolgNumber" Grid.Column="4" Background="Transparent" Style="{StaticResource Button}" ToolTip="Check Next Volgnummer Bestelbon" ToolTipService.ShowDuration="20000">
+                    <Image  Source="pack://application:,,,/Resources/ORDEREDLIST.png" Width="20" Margin="3,0,3,0"/>
+                </Button>-->
+                <Button x:Name="PartialDeliveredFilter" Grid.Column="5" Background="{Binding PartialDeliveredView,Converter={StaticResource BoolToBackgroundConverter}}" Style="{StaticResource Button}" ToolTip="Niet volledig geleverd" ToolTipService.ShowDuration="20000">
+                    <Image  Source="pack://application:,,,/Resources/CSPACK.png" Width="20" Margin="3,0,3,0"/>
+                </Button>
+                <Button x:Name="UserFilter" Grid.Column="6" Background="{Binding UserView,Converter={StaticResource BoolToBackgroundConverter}}" Style="{StaticResource Button}" ToolTip="Eigen Bestelbons" ToolTipService.ShowDuration="20000">
+                    <Image  Source="pack://application:,,,/Resources/USER.png" Width="20" Margin="3,0,3,0"/>
+                </Button>
+                <!--<Button x:Name="ExipredSelect" Grid.Column="3" Style="{StaticResource ToggleButton}" >
+                    <Image Grid.Column="1" Source="{Binding ExpiredTimeView, Converter={StaticResource ExpiredViewToImageConverter}}" Width="22" Margin="5,0,5,0"/>
+                </Button>-->
+                <Button x:Name="ExipredSelect" Grid.Column="7" Background="{Binding ExpiredTimeView,Converter={StaticResource BoolToBackgroundConverter}}" Style="{StaticResource Button}" ToolTip="Niet op tijd geleverd" ToolTipService.ShowDuration="20000" >
+                    <Image Grid.Column="1" Source="pack://application:,,,/Resources/TIME_OUT.png" Width="22" Margin="5,0,5,0"/>
+                </Button>
+
+            </Grid>
+        </Border>
+        <ListBox x:Name="BestelbonsLijstUI" SelectedItem="{Binding BestelbonsLijstSelectedItem}" Grid.Row="1" Foreground="Gainsboro" Background="#1B1B1B" Margin="0,0,0,05" BorderBrush="Orange" ItemContainerStyle="{StaticResource ListBoxItemOrange}" ScrollViewer.IsDeferredScrollingEnabled="True"  VirtualizingStackPanel.VirtualizationMode="Recycling" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <ProgressBar Grid.Row="0" Grid.ColumnSpan="3" Minimum="0" Maximum="100" Value="{Binding PercentageDelivered}" Foreground="Green" Background="{Binding DeliveryTimeExpired,Converter={StaticResource DeliveryExpiredToBrushConverter}}"  Style="{StaticResource ProgressBar}" Margin="0,0,0,0" Opacity="1" />
+                        <TextBlock Grid.Row="0" Grid.Column ="0" Margin="5,2"  HorizontalAlignment="Stretch"
+                               Text="{Binding Name}" 
+                               local:TextBlockHighlighter.Selection ="{Binding ElementName=Search, Path=Text}"
+                               local:TextBlockHighlighter.HighlightColor="Transparent"
+                               local:TextBlockHighlighter.Forecolor="Greenyellow">
+                            <TextBlock.ToolTip>
+                                <ToolTip Background="#2D2D30">
+                                    <Grid>
+                                        <StackPanel Width="125">
+                                            <TextBlock Text="Bestelbon Info" Foreground="Gainsboro" FontWeight="Bold" FontSize="14" Background="#2D2D30"/>
+                                            <Border BorderBrush="Silver" BorderThickness="0,2,0,0" Margin="0.8"/>
+                                            <StackPanel Orientation="Horizontal" Margin="0,5,0,3">
+                                                <TextBlock Text="Besteller" Foreground="Gainsboro"  Background="#2D2D30" Margin="0,2,0,0"/>
+                                                <TextBlock Text="{Binding Creator}" Foreground="Gainsboro" FontWeight="Bold" FontSize="14" Background="#2D2D30" Margin="10,0,0,0"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal" Margin="0,3,0,5" Visibility="{Binding PercentageDelivered,Converter={StaticResource IntToVisibilityConverter}}">
+                                                <TextBlock Text="Delta Levertijd " Foreground="Gainsboro"  Background="#2D2D30" Margin="0,2,0,0"/>
+                                                <TextBlock Text="{Binding DeltaDeliveryTime}" Foreground="Gainsboro" FontWeight="Bold" FontSize="14" Background="#2D2D30" Margin="10,0,0,0"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+                        <DockPanel Grid.Row="0" Grid.Column ="1" HorizontalAlignment="Right">
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                            <Image  Grid.Column ="0" Width="18" Margin="3,0,3,0">
+                                <Image.Source >
+                                    <MultiBinding Converter="{StaticResource BoolsToImageMultiConverter}">
+                                        <Binding Path="AskForApproval"/>
+                                        <Binding Path="Approved"/>
+                                    </MultiBinding>
+                                </Image.Source>
+                            </Image>
+                            <Image  Grid.Column ="1" Source="pack://application:,,,/Resources/MAIL.png" Width="18" Margin="3,0,3,0"  Visibility="{Binding BestelbonSend,Converter={StaticResource BoolToVisibilityHiddenConverter}}" />
+                            <Image  Grid.Column ="2" Source="pack://application:,,,/Resources/ADD.png" Width="18" Margin="3,0,3,0"   Visibility="{Binding AttachedFile,Converter={StaticResource BoolToVisibilityHiddenConverter}}"/>
+                        </DockPanel>
+                    </Grid>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Close" Grid.Column="0" Content="Close" Width="70" FontSize="12"  Background="#2D2D30" Style="{StaticResource BlueButton}"/>
+            <Button x:Name="Approve" Grid.Column="1"  Content="Approve"  Width="80" FontSize="12"  Background="#2D2D30" Style="{StaticResource BlueButton}"
+                    cal:Message.Attach="[Event MouseEnter] = [Action CheckCanApprove]" />
+        </Grid>
+
+    </Grid>
+</UserControl>
